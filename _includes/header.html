@@ -1,0 +1,48 @@
+  <!-- Uses a transparent header that draws on top of the layout's background -->
+<style>
+  .demo-layout-transparent {
+    background: url('../img/.jpg') center / cover;
+  }
+  .demo-layout-transparent .mdl-layout__header,
+  .demo-layout-transparent .mdl-layout__drawer-button {
+    /* This background is dark, so we set text to white. Use 87% black instead if
+       your background is light. */
+    color: white;
+  }
+  </style>
+  
+  <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header mdl-layout__header--transparent">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">{{ site.title }}</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation -->
+        <!-- <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav> -->
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Menu</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="{{ site.url }}"><i class="material-icons margin-right-2">home</i>Home</a>
+      {% for page in site.pages %}
+      {% if page.title %}
+        <a class="mdl-navigation__link" href="{{ page.url | prepend: site.baseurl }}">
+          
+          {% if page.icon %}
+          <i class="material-icons margin-right-2">{{ page.icon }}</i>
+          {% endif %}  
+  
+          {{ page.title }}
+        </a>
+        {% endif %}
+      {% endfor %}
+      </nav>
+    </div>
+  </div>
